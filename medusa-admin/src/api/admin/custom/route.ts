@@ -1,8 +1,9 @@
-import { MedusaRequest, MedusaResponse } from "@medusajs/medusa";
+import { MedusaRequest, MedusaResponse } from '@medusajs/medusa';
 
-export async function GET(
-  req: MedusaRequest,
-  res: MedusaResponse
-): Promise<void> {
-  res.sendStatus(200);
-}
+export const AUTHENTICATE = true;
+
+export const GET = (req: MedusaRequest, res: MedusaResponse) => {
+  res.json({
+    message: '[GET] Hello world!',
+  });
+};
