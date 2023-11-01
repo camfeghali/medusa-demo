@@ -1,17 +1,16 @@
 import { MedusaRequest, MedusaResponse } from '@medusajs/medusa';
-import Medusa from '@medusajs/medusa-js';
 
 import {
   addLineItemToCart,
   associateCustomerToCart,
   createCart,
   getCart,
-} from './helpers';
+} from '../helpers';
 
 const CUSTOMER_ID = 'cus_01HDK4FJ2G7JRQD18NAPKDMJVK';
 const VARIANT_ID = 'variant_01HDK485P11B9RX54V1Z3TGGZ4';
 
-export async function GET(
+export async function POST(
   req: MedusaRequest,
   res: MedusaResponse
 ): Promise<void> {

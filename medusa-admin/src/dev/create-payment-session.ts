@@ -2,7 +2,7 @@ import {
   addLineItemToCart,
   associateCustomerToCart,
   createCart,
-} from '../api/admin/create-payment-session/helpers';
+} from '../api/admin/helpers';
 
 const CUSTOMER_ID = 'cus_01HDK4FJ2G7JRQD18NAPKDMJVK';
 const VARIANT_ID = 'variant_01HDK485P11B9RX54V1Z3TGGZ4';

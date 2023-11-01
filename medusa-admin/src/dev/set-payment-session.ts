@@ -3,9 +3,9 @@ import {
   createPaymentSession,
   getCart,
   setPaymentSession,
-} from '../api/admin/create-payment-session/helpers';
+} from '../api/admin/helpers';
 
-const CART_ID = 'cart_01HE512X4HVE7J6RSDAQPF2DYZ';
+const CART_ID = 'cart_01HE580EE9TT6YMNP158107QP1';
 const PAYMENT_PROVIDER_ID = 'manual';
 
 async function main() {
