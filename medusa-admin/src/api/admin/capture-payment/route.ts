@@ -1,8 +1,8 @@
 import { MedusaRequest, MedusaResponse } from '@medusajs/medusa';
 
-import { createPaymentSession, getCart, setPaymentSession } from '../helpers';
+import { completeCart } from '../helpers';
 
-const PAYMENT_PROVIDER_ID = 'manual';
+import { OrderService } from '@medusajs/medusa/dist/services';
 
 export async function POST(
   req: MedusaRequest,
@@ -11,11 +11,14 @@ export async function POST(
   try {
     const { cartId } = req.body;
 
-    await createPaymentSession(cartId);
-    await setPaymentSession(cartId, PAYMENT_PROVIDER_ID);
+    const orderService: OrderService = req.scope.resolve('orderService');
 
-    let cart = await getCart(cartId);
-    res.json({ cart });
+    await completeCart(cartId);
+
+    const order = await orderService.retrieveByCartId(cartId);
+
+    orderService.capturePayment(order.id);
+
     res.send(200);
   } catch (err) {
     // console.log(err);

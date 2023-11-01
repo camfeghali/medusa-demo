@@ -37,3 +37,21 @@ export async function createCart() {
   const { cart } = await medusa().carts.create();
   return cart;
 }
+
+export async function updateCart(cartId: string, updates: any) {
+  await medusa().carts.update(cartId, { ...updates });
+}
+
+export async function setShippingMethod(cartId: string, methodId: string) {
+  await medusa().carts.addShippingMethod(cartId, {
+    option_id: methodId,
+  });
+}
+
+export async function listShippingMethods(cartId: string) {
+  return await medusa()
+    .shippingOptions.listCartOptions(cartId)
+    .then(({ shipping_options }) => {
+      return shipping_options;
+    });
+}
